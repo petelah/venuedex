@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% from "site_js.html" import tab_js %}
+{% block content %}
+    <div class="highlight-phone">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="intro">
+                    <h2>Like what you see?</h2>
+                    <p>Consider donating to help this project grow.
+                    As a solo developer and out of work bartender this project comes out of my own pocket.
+                    By donating we can use social media ads to advertise the service to help give back and get more eyes on your business.
+                    This project is completely not for profit and any donations will go straight back into the project to help the community.</p>
+                    <a class="btn btn-primary hidden" role="button" href="#">Donate</a></div>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="paypal">
+                    <input type="hidden" name="cmd" value="_donations" />
+                    <input type="hidden" name="business" value="seabrook.peter@gmail.com" />
+                    <input type="hidden" name="item_name" value="VenueDex donation" />
+                    <input type="hidden" name="currency_code" value="AUD" />
+                </form>
+                <button form="paypal" type="submit" role="button" class="btn btn-primary" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate">Donate</button>
+            </div>
+            <div class="col-sm-4">
+                <div class="d-none d-md-block iphone-mockup"><img src="iphone.svg" class="device" />
+                    <div class="screen"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block end_body_js %}
+{{ tab_js() }}
+{% endblock %}

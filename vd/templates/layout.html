@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    {% if title %}
+        <title>Venue Dex - {{ title }}</title>
+    {% else %}
+        <title>Venue Dex - Helping hospitality connect in a time of need.</title>
+    {% endif %}
+    {{ share.load() }}
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/lumen/bootstrap.min.css" rel="stylesheet" integrity="sha384-715VMUUaOfZR3/rWXZJ9agJ/udwSXGEigabzUbJm2NR4/v5wpDy8c14yedZN6NL7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Responsive-Form-1.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/ionicons.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
+</head>
+
+<body>
+ {% include "navbar.html" %}
+<div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+{% block content %}{% endblock %}
+
+<div class="footer-clean">
+        <footer>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-sm-4 col-md-3 item">
+                        <h3>Do Stuff</h3>
+                        <ul>
+                            <li><a href="{{ url_for('posts.add_business') }}">Add Business</a></li>
+                            <li><a href="mailto:hello@venuedex.net">Report Misuse</a></li>
+                            <li><a href="{{ url_for('admin.login') }}">Admin</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="{{ url_for('main.team') }}">Team</a></li>
+                            <li><a href="{{ url_for('main.donate') }}">Donate</a></li>
+                            <li><a href="mailto:hello@venuedex.net">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 col-md-3 item">
+                        <h3>States</h3>
+                        <ul>
+                            <li><a href="{{ url_for('posts.sydney', _anchor='tab-1') }}">Sydney</a></li>
+                            <li><a href="#">Melbourne</a></li>
+                            <li><a href="#">Adelaide</a></li>
+                            <li><a href="#">Brisbane</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 item social"><a href="http://facebook.com/mrpeterseabrook"><i class="icon ion-social-facebook"></i></a><a href="https://flask.palletsprojects.com/"><i class="icon ion-ios-flask"></i></a><a href="mailto:hello@venuedex.net"><i class="icon ion-email"></i></a>
+                        <p class="copyright">VenueDex© 2020</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162785690-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162785690-1');
+</script>
+
+
+
+</body>
+
+</html>

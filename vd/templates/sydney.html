@@ -1,0 +1,994 @@
+{% extends "layout.html" %}
+{% from "site_js.html" import tab_js %}
+{% block content %}
+<div>
+        <div class="container">
+            <div>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">All</a></li>
+                    <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">CBD</a></li>
+                    <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-3">Inner West</a></li>
+                    <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-4">Eastern Suburbs</a></li>
+                    <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-5">North Sydney</a></li>
+                    <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-6">Northern Beaches</a></li>
+                    <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-7">South Sydney</a></li>
+                    <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-8">Western Sydney</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" role="tabpanel" id="tab-1">
+                        <h1>Sydney - All</h1>
+                        <div class="table-responsive">
+                            <table role="table" class="table table-striped table-hover">
+                                {% include "thead.html" %}
+                                <tbody role="rowgroup">
+                                    {% for venue in venues %}
+                                        {% if venue.approved == True %}
+                                        <tr role="row">
+                                            <td role="cell">
+                                                {{ venue.business_name }}
+                                            </td>
+                                            <td role="cell">
+                                                {{ venue.desc }}
+                                            </td>
+                                            <td role="cell" class="large-icon">
+                                                {% if venue.menu|length > 1 %}
+                                                    <a href="{{ venue.menu }}"><i class="fa fa-link"></i></a>
+                                                {% else %}
+                                                    <span class="flase-dash">-</span>
+                                                {% endif %}
+
+                                            </td>
+                                            <td role="cell" class="large-icon">
+                                                {% if venue.food == True %}
+                                                    ✓
+                                                {% else %}
+                                                    ✗
+                                                {% endif %}
+                                                <br>
+                                            </td>
+                                            <td role="cell" class="large-icon">
+                                                {% if venue.booze == True %}
+                                                    ✓
+                                                {% else %}
+                                                    ✗
+                                                {% endif %}
+                                                <br>
+                                            </td>
+                                            <td role="cell" class="large-icon">
+                                                {% if venue.pickup == True %}
+                                                    ✓
+                                                {% else %}
+                                                    ✗
+                                                {% endif %}
+                                                <br>
+                                            </td>
+                                            <td role="cell" class="large-icon">
+                                                {% if venue.selfd == True %}
+                                                    ✓
+                                                {% else %}
+                                                    ✗
+                                                {% endif %}
+                                                <br>
+                                            </td>
+                                            <td role="cell" class="large-icon">
+                                                {% if venue.uber == True %}
+                                                    ✓
+                                                {% else %}
+                                                    ✗
+                                                {% endif %}
+                                                <br>
+                                            </td>
+                                            <td role="cell" class="large-icon">
+                                                {% if venue.deliveroo == True %}
+                                                    ✓
+                                                {% else %}
+                                                    ✗
+                                                {% endif %}
+                                                <br>
+                                            </td>
+                                            <td role="cell" class="large-icon">
+                                                    {% if venue.bopple == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                            <td role="cell" class="large-icon">
+                                                {% if venue.instagram|length > 1 %}
+                                                    <a href="{{ venue.instagram }}"><i class="icon ion-social-instagram-outline"></i></a>
+                                                {% else %}
+                                                    <span class="flase-dash">-</span>
+                                                {% endif %}
+                                            </td>
+                                            <td role="cell" class="large-icon">
+                                                {% if venue.facebook|length > 1 %}
+                                                    <a href="{{ venue.facebook }}"><i class="icon ion-social-facebook"></i></a>
+                                                {% else %}
+                                                    <span class="flase-dash">-</span>
+                                                {% endif %}
+                                            </td>
+                                            <td role="cell">
+                                                {% if venue.address|length > 1 %}
+                                                    {{ venue.address }}
+                                                {% else %}
+                                                    <span class="flase-dash">-</span>
+                                                {% endif %}
+                                            </td>
+                                            <td role="cell">
+                                                {% if venue.phone > 1 %}
+                                                    {{ venue.phone }}
+                                                {% else %}
+                                                    <span class="flase-dash">-</span>
+                                                {% endif %}
+                                            </td>
+                                            <td role="cell">
+                                                {% if venue.spinfo|length > 1 %}
+                                                    {{ venue.spinfo }}
+                                                {% else %}
+                                                    <span class="flase-dash">-</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="tab-2">
+                        <h1>Sydney - CBD</h1>
+                        <table class="table table-striped table-hover">
+                                {% include "thead.html" %}
+                                <tbody>
+                                    {% for venue in venues %}
+                                        {% if venue.region == 'SYD-CBD' and venue.approved == True %}
+                                            <tr>
+                                                <td>
+                                                    {{ venue.business_name }}
+                                                </td>
+                                                <td>
+                                                    {{ venue.desc }}
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.menu|length > 1 %}
+                                                        <a href="{{ venue.menu }}"><i class="fa fa-link"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.food == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.booze == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.pickup == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.selfd == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.uber == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.deliveroo == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.bopple == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.instagram|length > 1 %}
+                                                        <a href="{{ venue.instagram }}"><i class="icon ion-social-instagram-outline"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.facebook|length > 1 %}
+                                                        <a href="{{ venue.facebook }}"><i class="icon ion-social-facebook"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.address|length > 1 %}
+                                                        {{ venue.address }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.phone > 1 %}
+                                                        {{ venue.phone }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.spinfo|length > 1 %}
+                                                        {{ venue.spinfo }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+{#                                        {% else %}#}
+{#                                            <h1>No businesses listed in this region?</h1>#}
+{#                                            <button class="btn btn-primary" type="button">Add business</button>#}
+{#                                            <h3>Or share: </h3>#}
+{#                                            {{ share.create() }}#}
+                                        {% endif %}
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="tab-3">
+                        <h1>Sydney - Inner West</h1>
+                        <table class="table table-striped table-hover">
+                                {% include "thead.html" %}
+                                <tbody>
+                                    {% for venue in venues %}
+                                        {% if venue.region == 'IW' and venue.approved == True %}
+                                            <tr>
+                                                <td>
+                                                    {{ venue.business_name }}
+                                                </td>
+                                                <td>
+                                                    {{ venue.desc }}
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.menu|length > 1 %}
+                                                        <a href="{{ venue.menu }}"><i class="fa fa-link"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.food == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.booze == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.pickup == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.selfd == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.uber == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.deliveroo == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.bopple == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.instagram|length > 1 %}
+                                                        <a href="{{ venue.instagram }}"><i class="icon ion-social-instagram-outline"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.facebook|length > 1 %}
+                                                        <a href="{{ venue.facebook }}"><i class="icon ion-social-facebook"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.address|length > 1 %}
+                                                        {{ venue.address }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.phone > 1 %}
+                                                        {{ venue.phone }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.spinfo|length > 1 %}
+                                                        {{ venue.spinfo }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endif %}
+
+                                    {% endfor %}
+
+
+                                </tbody>
+
+                            </table>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="tab-4">
+                        <h1>Sydney - Eastern Suburbs</h1>
+                        <table class="table table-striped table-hover">
+                                {% include "thead.html" %}
+                                <tbody>
+                                    {% for venue in venues %}
+                                        {% if venue.region == 'ES' and venue.approved == True %}
+                                            <tr>
+                                                <td>
+                                                    {{ venue.business_name }}
+                                                </td>
+                                                <td>
+                                                    {{ venue.desc }}
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.menu|length > 1 %}
+                                                        <a href="{{ venue.menu }}"><i class="fa fa-link"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.food == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.booze == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.pickup == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.selfd == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.uber == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.deliveroo == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.bopple == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.instagram|length > 1 %}
+                                                        <a href="{{ venue.instagram }}"><i class="icon ion-social-instagram-outline"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.facebook|length > 1 %}
+                                                        <a href="{{ venue.facebook }}"><i class="icon ion-social-facebook"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.address|length > 1 %}
+                                                        {{ venue.address }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.phone > 1 %}
+                                                        {{ venue.phone }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.spinfo|length > 1 %}
+                                                        {{ venue.spinfo }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="tab-5">
+                        <h1>Sydney - North Sydney</h1>
+                        <table class="table table-striped table-hover">
+                                {% include "thead.html" %}
+                                <tbody>
+                                    {% for venue in venues %}
+                                        {% if venue.region == 'NS' and venue.approved == True %}
+                                            <tr>
+                                                <td>
+                                                    {{ venue.business_name }}
+                                                </td>
+                                                <td>
+                                                    {{ venue.desc }}
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.menu|length > 1 %}
+                                                        <a href="{{ venue.menu }}"><i class="fa fa-link"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.food == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.booze == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.pickup == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.selfd == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.uber == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.deliveroo == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.bopple == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.instagram|length > 1 %}
+                                                        <a href="{{ venue.instagram }}"><i class="icon ion-social-instagram-outline"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.facebook|length > 1 %}
+                                                        <a href="{{ venue.facebook }}"><i class="icon ion-social-facebook"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.address|length > 1 %}
+                                                        {{ venue.address }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.phone > 1 %}
+                                                        {{ venue.phone }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.spinfo|length > 1 %}
+                                                        {{ venue.spinfo }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="tab-6">
+                        <h1>Sydney - Northern Beaches</h1>
+                        <table class="table table-striped table-hover">
+                                {% include "thead.html" %}
+                                <tbody>
+                                    {% for venue in venues %}
+                                        {% if venue.region == 'NS' and venue.approved == True %}
+                                            <tr>
+                                                <td>
+                                                    {{ venue.business_name }}
+                                                </td>
+                                                <td>
+                                                    {{ venue.desc }}
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.menu|length > 1 %}
+                                                        <a href="{{ venue.menu }}"><i class="fa fa-link"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.food == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.booze == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.pickup == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.selfd == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.uber == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.deliveroo == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.bopple == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.instagram|length > 1 %}
+                                                        <a href="{{ venue.instagram }}"><i class="icon ion-social-instagram-outline"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.facebook|length > 1 %}
+                                                        <a href="{{ venue.facebook }}"><i class="icon ion-social-facebook"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.address|length > 1 %}
+                                                        {{ venue.address }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.phone > 1 %}
+                                                        {{ venue.phone }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.spinfo|length > 1 %}
+                                                        {{ venue.spinfo }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="tab-7">
+                        <h1>Sydney - South Sydney</h1>
+                        <table class="table table-striped table-hover">
+                                {% include "thead.html" %}
+                                <tbody>
+                                    {% for venue in venues %}
+                                        {% if venue.region == 'NS' and venue.approved == True %}
+                                            <tr>
+                                                <td>
+                                                    {{ venue.business_name }}
+                                                </td>
+                                                <td>
+                                                    {{ venue.desc }}
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.menu|length > 1 %}
+                                                        <a href="{{ venue.menu }}"><i class="fa fa-link"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.food == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.booze == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.pickup == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.selfd == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.uber == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.deliveroo == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.bopple == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.instagram|length > 1 %}
+                                                        <a href="{{ venue.instagram }}"><i class="icon ion-social-instagram-outline"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.facebook|length > 1 %}
+                                                        <a href="{{ venue.facebook }}"><i class="icon ion-social-facebook"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.address|length > 1 %}
+                                                        {{ venue.address }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.phone > 1 %}
+                                                        {{ venue.phone }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.spinfo|length > 1 %}
+                                                        {{ venue.spinfo }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="tab-8">
+                        <h1>Sydney - Western Sydney</h1>
+                        <table class="table table-striped table-hover">
+                                {% include "thead.html" %}
+                                <tbody>
+                                    {% for venue in venues %}
+                                        {% if venue.region == 'NS' and venue.approved == True %}
+                                            <tr>
+                                                <td>
+                                                    {{ venue.business_name }}
+                                                </td>
+                                                <td>
+                                                    {{ venue.desc }}
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.menu|length > 1 %}
+                                                        <a href="{{ venue.menu }}"><i class="fa fa-link"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.food == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.booze == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.pickup == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.selfd == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.uber == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.deliveroo == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.bopple == True %}
+                                                        ✓
+                                                    {% else %}
+                                                        ✗
+                                                    {% endif %}
+                                                    <br>
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.instagram|length > 1 %}
+                                                        <a href="{{ venue.instagram }}"><i class="icon ion-social-instagram-outline"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td class="large-icon">
+                                                    {% if venue.facebook|length > 1 %}
+                                                        <a href="{{ venue.facebook }}"><i class="icon ion-social-facebook"></i></a>
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.address|length > 1 %}
+                                                        {{ venue.address }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.phone > 1 %}
+                                                        {{ venue.phone }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if venue.spinfo|length > 1 %}
+                                                        {{ venue.spinfo }}
+                                                    {% else %}
+                                                        <span class="flase-dash">-</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block end_body_js %}
+{{ tab_js() }}
+{% endblock %}

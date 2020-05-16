@@ -1,0 +1,265 @@
+@media (min-width: 1200px)
+.container, .container-sm, .container-md, .container-lg, .container-xl {
+    max-width: 1250px;
+}
+
+th.rotate {
+  height: 100px;
+  white-space: nowrap;
+}
+
+th.rotate > div {
+  transform: translate(0px, 0px) rotate(315deg);
+  width: 30px;
+}
+
+th.rotate > div > span {
+  border-bottom: 1px solid #ccc;
+  padding: 0px 0px;
+}
+
+.table thead th {
+  /*margin-left: -20px;*/
+  /*margin-right: -20px;*/
+  /*padding: 0;*/
+}
+
+.front-jumbo {
+  background-image: url("../img/alanadimou-ps40-highres-41.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 1000px;
+  color: whitesmoke
+}
+
+.front-jumbo p{
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.front-jumbo p{
+  color: whitesmoke;
+  font-weight: bold;
+}
+.form-label {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.form-input {
+  margin-top: -10px;
+}
+
+.hidden {
+    display: none;
+}
+
+mark {
+    line-height: 1.65em;
+}
+
+.checkbox-label {
+  marin-left: 5px;
+  font-size: 13px;
+}
+
+.large-icon {
+  font-size: 25px;
+}
+
+.login-form {
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 50px;
+}
+
+.highlight-phone {
+  color: #313437;
+  background-color: #eef4f7;
+  padding: 50px 0 55px;
+  overflow: hidden;
+}
+
+@media (max-width:767px) {
+  .highlight-phone {
+    text-align: center;
+  }
+}
+
+.highlight-phone p {
+  color: #7d8285;
+}
+
+.highlight-phone h2 {
+  font-weight: bold;
+  margin-bottom: 35px;
+  line-height: 1.5;
+  padding-top: 0;
+  margin-top: 0;
+  color: inherit;
+}
+
+.highlight-phone .intro {
+  font-size: 18px;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+@media (max-width:767px) {
+  .highlight-phone .intro {
+    max-width: none;
+  }
+}
+
+.highlight-phone .intro p {
+  margin-bottom: 35px;
+}
+
+form .highlight-phone .intro .btn {
+  padding: 16px 32px;
+  border: none;
+  background: none;
+  box-shadow: none;
+  text-shadow: none;
+  opacity: 0.9;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing: 0.4px;
+  line-height: 1;
+}
+
+form .highlight-phone .intro .btn:hover {
+  opacity: 1;
+}
+
+form .highlight-phone .intro .btn:active {
+  transform: translateY(1px);
+}
+
+form .highlight-phone .intro .btn-primary {
+  background-color: #055ada;
+  color: #fff;
+}
+
+.highlight-phone .iphone-mockup {
+  position: relative;
+  max-width: 260px;
+  margin-top: -30px;
+  margin-bottom: -230px;
+  transform: rotate(-15deg);
+}
+
+.highlight-phone .iphone-mockup img.device {
+  width: 100%;
+  height: auto;
+}
+
+.highlight-phone .iphone-mockup .screen {
+  position: absolute;
+  width: 88%;
+  height: 77%;
+  top: 12%;
+  border-radius: 2px;
+  left: 6%;
+  border: 1px solid #444;
+  background-color: #aaa;
+  overflow: hidden;
+  background: url(../../assets/img/screen-content-iphone-6.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.highlight-phone .iphone-mockup .screen:before {
+  content: '';
+  background-color: #fff;
+  position: absolute;
+  width: 70%;
+  height: 140%;
+  top: -12%;
+  right: -60%;
+  transform: rotate(-19deg);
+  opacity: 0.2;
+}
+
+
+
+
+
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+	@media
+	  only screen
+    and (max-width: 760px), (min-device-width: 768px)
+    and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      margin: 0 0 1rem 0;
+      text-align-all: right;
+    }
+
+    tr:nth-child(odd) {
+      background: #ccc;
+    }
+
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+            text-align: right;
+            padding-right: 20px!important;
+            padding-left: 50%!important;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+            text-align: left;
+            font-size: 25px;
+		}
+        td:before #text {
+          text-align: right;
+        }
+
+		/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+		td:nth-of-type(1):before { content: "Venue:"; }
+		td:nth-of-type(2):before { content: "Description:"; }
+		td:nth-of-type(3):before { content: "Menu:"; }
+		td:nth-of-type(4):before { content: "Food:"; }
+		td:nth-of-type(5):before { content: "Booze:"; }
+		td:nth-of-type(6):before { content: "Pickup:"; }
+		td:nth-of-type(7):before { content: "Self Delivery:"; }
+		td:nth-of-type(8):before { content: "Uber Eats:"; }
+		td:nth-of-type(9):before { content: "Deliveroo:"; }
+		td:nth-of-type(10):before { content: "Bopple:"; }
+        td:nth-of-type(11):before { content: "Instagram:"; }
+        td:nth-of-type(12):before { content: "Facebook:"; }
+        td:nth-of-type(13):before { content: "Address:"; }
+        td:nth-of-type(14):before { content: "Phone:"; }
+        td:nth-of-type(15):before { content: "Info:"; }
+	}
+

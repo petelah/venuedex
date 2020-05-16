@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% from "site_js.html" import tab_js %}
+{% block content %}
+<div class="team-boxed">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">Team </h2>
+            <p class="text-center">The VenueDex year book.</p>
+        </div>
+        <div class="row people">
+            <div class="col-md-6 col-lg-4 item">
+                <div class="box"><img class="rounded-circle" src="../static/img/PeterSeabrook.jpg" />
+                    <h3 class="name">Peter Seabrook</h3>
+                    <p class="title">Project lead</p>
+                    <p class="description">I say project lead but I am really only leading myself. After a bunch of people contantly asking who does take out or delivery etc I decided to come up with a little directory for all y&#39;all to use. Hopefully it can help guests
+                        and customers find what they need a little easier in this time of crisis and get your products into mouths and bellies.</p>
+                    <div class="social"><a href="http://facebook.com/mrpeterseabrook"><i class="fa fa-facebook-official"></i></a><a href="http://twitter.com/peterseabrook"><i class="fa fa-twitter"></i></a><a href="http://instagram.com/petelah"><i class="fa fa-instagram"></i></a></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 item"></div>
+            <div class="col-md-6 col-lg-4 item">
+                <div class="box"><img class="rounded-circle" src="../static/img/no-profile.xlg.jpg" />
+                    <h3 class="name">Join Us!</h3>
+                    <p class="title">Meow!</p>
+                    <p class="description">Want to contribute to our project?<br />We have space for whoever is interested in helping out, even if you don&#39;t have coding experience and want to learn, what better time right?<br />The platform is written in python and runs
+                        on flask framework with a complete custom CMS from scratch sprinkled with a little javascript.<br />If you you think that is you email us at hello@venuedex.com.au.</p>
+                    <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-instagram"></i></a><a href="#"><i class="icon ion-ios-flask"></i></a><a href="#"><i class="icon ion-social-python"></i></a><a href="#"><i class="icon ion-social-javascript"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block end_body_js %}
+{{ tab_js() }}
+{% endblock %}

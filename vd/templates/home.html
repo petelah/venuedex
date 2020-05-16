@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="jumbotron front-jumbo">
+        <h1 style="font-size: 48px;"><mark>The Hospitality Directory</mark></h1>
+        <p><mark>Show off what you got to the people in your neighbourhood.</mark></p>
+        <p><a class="btn btn-primary" role="button" href="{{ url_for('posts.add_business') }}">Add Business</a></p>
+    </div>
+{% endblock content %}
